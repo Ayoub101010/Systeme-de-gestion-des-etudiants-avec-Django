@@ -1,1 +1,1 @@
-# Systeme-de-gestion-des-tudiants-avec-Django
+# Systeme-de-gestion-des-étudiants-avec-Django
