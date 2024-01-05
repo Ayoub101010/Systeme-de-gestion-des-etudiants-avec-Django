@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: "Noto Sans TC", sans-serif;
+  background-image: url("/static/image.png"); /* Assurez-vous d'ajuster le chemin de l'image selon votre structure de fichiers */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 100vh;
+}
+
+body::before {
+  content: "";
+  background: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Couleur d'arrière-plan avec opacité */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Placez cette couche derrière le contenu de body */
+}
+
+.title-container {
+  background: #5c1769;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+.container {
+  border-color: #6d1c7d;
+  width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  margin-top: 200px;
+  margin-left: 220px;
+}
+
+.left {
+  width: 30%;
+  padding: 0 20px;
+  margin-right: 10%;
+}
+
+.left img {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.right {
+  width: 30%;
+  margin-bottom: 295px;
+}
+
+.center {
+  width: 430px;
+  margin: 130px auto;
+  position: relative;
+}
+.center .header {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  padding: 25px 0 30px 25px;
+  background: #5c1769;
+  border-bottom: 1px solid #370e3f;
+  border-radius: 5px 5px 0 0;
+}
+.center form {
+  position: absolute;
+  background: white;
+  width: 100%;
+  padding: 50px 10px 0 30px;
+  box-sizing: border-box;
+  border: 1px solid #6d1c7d;
+  border-radius: 0 0 5px 5px;
+}
+form input {
+  height: 50px;
+  width: 90%;
+  padding: 0 10px;
+  border-radius: 3px;
+  border: 1px solid silver;
+  font-size: 18px;
+  outline: none;
+}
+form input[type="password"] {
+  margin-top: 20px;
+}
+form i {
+  position: absolute;
+  font-size: 25px;
+  color: grey;
+  margin: 15px 0 0 -45px;
+}
+i.fa-lock {
+  margin-top: 35px;
+}
+form input[type="submit"] {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 130px;
+  height: 45px;
+  color: white;
+  cursor: pointer;
+  line-height: 45px;
+  border-radius: 45px;
+  border-radius: 5px;
+  background: #5c1769;
+}
+form input[type="submit"]:hover {
+  background: #491254;
+  transition: 0.5s;
+}
+form a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #7f2092;
+  padding: 0 0 0 20px;
+}

@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Student Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'base' %}">
+          <i class="fa-solid fa-house fa-lg"></i> Acceuil
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarColor01"
+          aria-controls="navbarColor01"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="{% url 'Index' %}">
+                <i class="fa-solid fa-rectangle-list fa-lg"></i> La liste des
+                etudiants
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'add' %}">
+                <i class="fa-solid fa-plus fa-lg"></i> Ajouter un étudiant
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa-solid fa-user-plus fa-lg"></i> Ajouter un admin
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'Notes'%}">
+                <i class="fa-solid fa-note-sticky fa-lg"></i> notes
+              </a>
+            </li>
+          </ul>
+
+          <button
+            type="button"
+            class="btn btn-secondary my-2 my-sm-0"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutConfirmation"
+          >
+            <i class="fa-solid fa-right-from-bracket fa-lg"></i> Se déconnecter
+          </button>
+
+          <!-- Logout Confirmation -->
+          <div
+            class="modal"
+            id="logoutConfirmation"
+            tabindex="-1"
+            aria-labelledby="myModalLabel3"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirmation de déconnexion</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+                </div>
+                <div class="modal-footer">
+                  <form
+                    id="logoutForm"
+                    action="{% url 'myapp_logout' %}"
+                    method="POST"
+                  >
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">
+                      Déconnexion
+                    </button>
+                  </form>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid">{% block body %} {% endblock %}</div>
+    <footer class="mt-auto mb-4">
+      <div class="d-flex justify-content-center align-items-center text-center">
+        <i class="fa-brands fa-facebook fa-lg me-3"></i>
+        <i class="fa-brands fa-instagram fa-lg me-3"></i>
+        <i class="fa-brands fa-linkedin fa-lg me-3"></i>
+        <i class="fa-brands fa-twitter fa-lg me-3"></i>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function confirmLogout() {
+        // Afficher le modèle de confirmation de déconnexion
+        $("#logoutConfirmation").modal("show");
+      }
+    </script>
+  </body>
+</html>

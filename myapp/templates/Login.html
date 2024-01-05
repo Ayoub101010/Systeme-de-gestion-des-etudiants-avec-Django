@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+    />
+  </head>
+  <body>
+    <div class="title-container">
+      <h1>
+        <i class="fas fa-school" style="margin-right: 2rem"></i> Système de
+        gestion des étudiants de la géoinformation
+      </h1>
+    </div>
+    <div class="container">
+      <div class="left">
+        <!-- Add your rounded picture here -->
+        <img src="{% static "image.png" %}" alt="image" />
+      </div>
+
+      <div class="right">
+        <div class="center">
+          <div class="login-container">
+            <div class="header">Connexion</div>
+            <form action="{% url 'base' %}" method="post">
+              {% csrf_token %}
+              <input
+                name="username"
+                id="username"
+                type="text"
+                placeholder="Nom d'utilisateur"
+              />
+              <i class="far fa-envelope"></i>
+              <input
+                name="pswrd"
+                id="pswrd"
+                type="password"
+                placeholder="Mot de passe"
+              />
+              <i class="fas fa-lock" onclick="show()"></i>
+              <input type="submit" value=" Se connecter" />
+              <a href="#">Mot de passe oublié?</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function show() {
+        var pswrd = document.getElementById("pswrd");
+        var icon = document.querySelector(".fas");
+        if (pswrd.type === "password") {
+          pswrd.type = "text";
+          pswrd.style.marginTop = "20px";
+          icon.style.color = "#7f2092";
+        } else {
+          pswrd.type = "password";
+          icon.style.color = "grey";
+        }
+      }
+    </script>
+  </body>
+</html>
