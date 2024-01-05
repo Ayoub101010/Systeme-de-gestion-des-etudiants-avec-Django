@@ -7,8 +7,8 @@ from django.urls import reverse
 
 from django.contrib.auth.models import User
 from django.contrib import messages 
-from .models import Student, Note
-from .forms import StudentForm, NoteForm
+from .models import Student, Note,Utilisateur
+from .forms import StudentForm, NoteForm,UtilisateurForm
 
 
 
@@ -163,5 +163,32 @@ def add_notes(request):
   }) 
 
   
+def addUser(request):
+  if request.method == 'POST':
+    form = UtilisateurForm(request.POST)
+    if form.is_valid():
+      new_User_number = form.cleaned_data['User_number']
+      new_Prenom = form.cleaned_data['Prenom']
+      new_Nom = form.cleaned_data['Nom']
+      new_email = form.cleaned_data['email']
+      new_cin = form.cleaned_data['CIN']
 
+      new_utilisateur = Utilisateur(
+        User_number=new_User_number,
+        Prenom=new_Prenom,
+        Nom=new_Nom,
+        email=new_email,
+        CIN=new_cin
+      )
+      new_utilisateur.save()
+      return render(request, 'addUser.html', {
+        'form': UtilisateurForm(),
+        'success': True
+      })
+    return redirect('myapp') 
+  else:
+    form = UtilisateurForm()
+  return render(request, 'add_User.html', {
+    'form': UtilisateurForm()
+  })
 

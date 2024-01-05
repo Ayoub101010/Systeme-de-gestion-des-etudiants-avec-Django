@@ -21,4 +21,12 @@ class Note(models.Model):
   Python = models.FloatField()
   Teledetecion = models.FloatField()
   
+class Utilisateur(models.Model):
+  User_number = models.PositiveIntegerField()
+  Prenom = models.CharField(max_length=50)
+  Nom = models.CharField(max_length=50)
+  email = models.EmailField(max_length=100)
+  CIN = models.CharField(max_length=50)
+  
+  
   

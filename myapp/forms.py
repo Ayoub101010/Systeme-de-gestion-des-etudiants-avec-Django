@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student,Note
+from .models import Student,Note,Utilisateur
 
 
 class StudentForm(forms.ModelForm):
@@ -41,4 +41,21 @@ class NoteForm(forms.ModelForm):
       'Teledetecion': forms.NumberInput(attrs={'class': 'form-control'}),
     }
     
-    
+class UtilisateurForm(forms.ModelForm):
+  class Meta:
+    model = Utilisateur
+    fields = ['User_number', 'Prenom', 'Nom', 'email', 'CIN']
+    labels = {
+      'User_number': "Numéro de l'utilisateur",
+      'Prenom': 'PRENOM',
+      'Nom': 'NOM',
+      'email': 'Email',
+      'CIN': 'Cin'
+    }
+    widgets = {
+      'User_number': forms.NumberInput(attrs={'class': 'form-control'}),
+      'Prenom': forms.TextInput(attrs={'class': 'form-control'}),
+      'Nom': forms.TextInput(attrs={'class': 'form-control'}),
+      'email': forms.EmailInput(attrs={'class': 'form-control'}),
+      'CIN': forms.NumberInput(attrs={'class': 'form-control'}),
+    }
